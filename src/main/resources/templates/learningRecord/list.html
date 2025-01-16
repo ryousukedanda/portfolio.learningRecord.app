@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>学習記録リスト</title>
+</head>
+<body>
+<h1>学習記録リスト</h1>
+
+<table>
+  <thead>
+  <tr>
+    <th>日時</th>
+    <th>学習内容</th>
+    <th>学習時間</th>
+    <th>感想</th>
+  </tr>
+  </thead>
+  <tr th:each="learning : ${learningList}">
+    <td th:text="${learning.learningDate}">(learningDate)</td>
+    <td th:text="${learning.learningContent}">(learningContent)</td>
+    <td th:text="${learning.learningTime}">(learningTime)</td>
+    <td th:text="${learning.impression}">(impression)</td>
+  </tr>
+
+
+</table>
+
+</body>
+</html>
