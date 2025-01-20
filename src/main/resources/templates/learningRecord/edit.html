@@ -1,0 +1,45 @@
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <title>学習記録フォーム</title>
+</head>
+<body>
+<h1>学習記録編集</h1>
+
+<!--ホーム画面へ-->
+<a href="../index.html" th:href="@{/}">トップページへ</a>
+
+<!--入力フォーム-->
+<form action="#" th:action="@{/learningRecord/edit}" method="post" th:object="${learningForm}">
+
+  <input type="hidden" th:field="*{id}">
+  <div>
+    <label for="date">日付</label>
+    <input type="date"  id="date" name="learningDate" th:value="*{learningDate}" value="2025-01-1" min="2018-01-01" max="2100-12-31" />
+    <p th:if="${#fields.hasErrors('learningDate')}" th:errors="*{learningDate}" ></p>
+  </div>
+  <br>
+  <div>
+    <label for="form">学習内容</label>
+    <input type="text" id="form" th:field="*{learningContent}" >
+    <p th:if="${#fields.hasErrors('learningContent')}" th:errors="*{learningContent}"></p>
+  </div>
+  <br>
+  <div>
+    <label for="time">学習時間</label>
+    <input type="text" id="time" th:field="*{learningTime}" >
+    <p th:if="${#fields.hasErrors('learningTime')}" th:errors="*{learningTime}" ></p>
+  </div>
+  <br>
+  <div>
+    <label for="impression">感想</label>
+    <input type="text" id="impression" th:field="*{impression}">
+    <p th:if="${#fields.hasErrors('impression')}" th:errors="*{impression}" ></p>
+  </div>
+
+  <br><button type="submit" name="action" value="update">更新</button>
+  <br><button type="submit" name="action" value="delete">削除</button>
+</form>
+
+</body>
+</html>

@@ -1,0 +1,42 @@
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" >
+<head>
+    <meta charset="UTF-8">
+    <title>学習記録フォーム</title>
+</head>
+<body>
+<h1>学習記録フォーム</h1>
+
+<a href="../index.html" th:href="@{/}">ホーム画面へ</a>
+
+<form action="#" th:action="@{/learningRecord/create}" method="post" th:object="${learningForm}">
+
+  <br>
+  <div>
+    <label for="date">日付</label>
+    <input type="date" id="date" value="2025-01-16" min="2025-01-01" max="2050-12-31" th:field="*{learningDate}">
+    <p th:if="${#fields.hasErrors('learningDate')}" th:errors="*{learningDate}" ></p>
+  </div>
+  <br>
+  <div>
+    <label for="content">学習内容</label>
+    <textarea id="content"  th:field="*{learningContent}"></textarea>
+    <p th:if="${#fields.hasErrors('learningContent')}" th:errors="*{learningContent}"></p>
+  </div>
+  <br>
+  <div>
+    <label for="time">学習時間</label>
+    <input type="text" id="time" th:field="*{learningTime}">
+    <p th:if="${#fields.hasErrors('learningTime')}" th:errors="*{learningTime}" ></p>
+  </div>
+  <br>
+  <div>
+    <label for="impression">感想</label>
+    <textarea id="impression"  th:field="*{impression}"></textarea>
+    <p th:if="${#fields.hasErrors('impression')}" th:errors="*{impression}" ></p>
+  </div>
+
+
+  <br><button type="submit">送信</button>
+</form>
+</body>
+</html>
